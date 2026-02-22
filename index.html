@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Media Buyer Club — Mastermind de Media Buying de Elite</title>
+  <meta name="description" content="O Mastermind definitivo para compradores de mídia de alta performance. Estratégias de Direct Response que não estão no YouTube." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-main':    '#07040B',
+            'bg-card':    '#0D0911',
+            'primary':    '#7AD1B8',
+            'destroy':    '#EF5F5F',
+            'txt':        '#F2F2F2',
+            'muted':      '#948B9E',
+            'bdr':        '#2A2433',
+          },
+          fontFamily: {
+            tight: ['Inter Tight', 'sans-serif'],
+            sans:  ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            '4xl': '2rem',
+            '5xl': '2.5rem',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ─── Reset & base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #07040B;
+      color: #F2F2F2;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── Grid background ──────────────────────────── */
+    .bg-grid {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ─── Scrollbar ────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #07040B; }
+    ::-webkit-scrollbar-thumb { background: #2A2433; border-radius: 2px; }
+
+    /* ─── Typography helpers ───────────────────────── */
+    .heading {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #7AD1B8 0%, #4db8a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── Pill / badge ─────────────────────────────── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border: 1px solid rgba(122,209,184,0.28);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7AD1B8;
+    }
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7AD1B8;
+      flex-shrink: 0;
+    }
+
+    /* ─── Glow blobs ───────────────────────────────── */
+    .glow-green {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(122,209,184,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .glow-red {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(239,95,95,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ─── Header ───────────────────────────────────── */
+    #site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
+      border-bottom: 1px solid transparent;
+    }
+    #site-header.scrolled {
+      background: rgba(7,4,11,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: #2A2433;
+    }
+
+    /* ─── Marquee ──────────────────────────────────── */
+    .marquee-track {
+      display: flex;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── Cards ────────────────────────────────────── */
+    .card {
+      background: #0D0911;
+      border: 1px solid #2A2433;
+      border-radius: 18px;
+      padding: 28px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .card:hover { border-color: rgba(122,209,184,0.3); }
+
+    .card-danger:hover {
+      border-color: rgba(239,95,95,0.35) !important;
+      box-shadow: 0 0 40px 4px rgba(239,95,95,0.12);
+    }
+
+    /* ─── Avatar gradient border ───────────────────── */
+    .avatar-ring {
+      padding: 2.5px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7AD1B8 0%, #4a90d9 50%, #9b59b6 100%);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .avatar-ring img,
+    .avatar-ring .avatar-fallback {
+      display: block;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #0D0911;
+    }
+    .avatar-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: #7AD1B8;
+    }
+
+    /* ─── Horizontal carousel ──────────────────────── */
+    .carousel-scroll {
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .carousel-scroll::-webkit-scrollbar { display: none; }
+    .carousel-scroll > * { scroll-snap-align: start; }
+
+    /* ─── Timeline ─────────────────────────────────── */
+    .timeline-wrap { position: relative; }
+    .timeline-spine {
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, transparent 0%, #2A2433 15%, #7AD1B8 50%, #2A2433 85%, transparent 100%);
+    }
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #7AD1B8;
+      border: 3px solid #07040B;
+      box-shadow: 0 0 14px 4px rgba(122,209,184,0.45);
+      flex-shrink: 0;
+    }
+
+    /* ─── Masonry ──────────────────────────────────── */
+    .masonry {
+      columns: 3;
+      column-gap: 16px;
+    }
+    @media (max-width: 1024px) { .masonry { columns: 2; } }
+    @media (max-width: 640px)  { .masonry { columns: 1; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 16px; }
+
+    /* ─── FAQ ──────────────────────────────────────── */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ─── Stat counter ─────────────────────────────── */
+    .stat-num {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    /* ─── Noise overlay ────────────────────────────── */
+    .noise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    /* Responsive heading sizes */
+    .hero-title    { font-size: clamp(52px, 10vw, 128px); }
+    .section-title { font-size: clamp(36px, 6vw, 80px); }
+    .mid-title     { font-size: clamp(28px, 4vw, 60px); }
+  </style>
+</head>
+
+<body class="bg-grid">
+
+<!-- ══════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════ -->
+<header id="site-header">
+  <!-- Logo -->
+  <a href="#" class="flex items-center gap-3 no-underline group">
+    <img src="/TMBC2xlogo.png" alt="The Media Buyer Club" style="height: 32px; width: auto;" />
+  </a>
+
+  <!-- CTA pill -->
+  <button style="background:#EF5F5F;color:#fff;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;padding:9px 20px;border-radius:999px;border:none;cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+    INGRESSO ENCERRADO
+  </button>
+</header>
+
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════ -->
+<section style="position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;overflow:hidden;">
+
+  <!-- Glow blobs -->
+  <div class="glow-green" style="width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-54%);"></div>
+  <div class="glow-green" style="width:300px;height:300px;top:60%;left:50%;transform:translate(-50%,-50%);opacity:.5;"></div>
+
+  <!-- Badge -->
+  <div class="pill" style="margin-bottom:28px;" data-aos="fade-up">
+    <span class="pill-dot" style="animation:pulse 2s infinite;"></span>
+    ACESSO RESTRITO
+  </div>
+
+  <!-- Main heading -->
+  <div data-aos="fade-up" data-aos-delay="140" style="margin-bottom: 24px;">
+    <img src="/TMBC2xlogo.png" alt="The Media Buyer Club" style="width: 100%; max-width: 800px; height: auto; margin: 0 auto;" />
+  </div>
+
+  <!-- Subheading -->
+  <p data-aos="fade-up" data-aos-delay="200" style="color:#948B9E;font-size:clamp(15px,2vw,18px);max-width:620px;line-height:1.65;margin-bottom:16px;">
+    Acesso restrito a estratégias do Direct Response e Compra de Mídia de Alta Performance no Mercado Americano, Global e BR
+  </p>
+  <div data-aos="fade-up" data-aos-delay="220" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:40px;">
+    <span style="background:rgba(122,209,184,0.08);border:1px solid rgba(122,209,184,0.2);border-radius:999px;padding:6px 16px;font-size:13px;color:#7AD1B8;font-weight:600;">Não é formação. Não é mentoria em grupo.</span>
+    <span style="background:rgba(122,209,184,0.08);border:1px solid rgba(122,209,184,0.2);border-radius:999px;padding:6px 16px;font-size:13px;color:#7AD1B8;font-weight:600;">É um ambiente fechado.</span>
+  </div>
+
+  <!-- CTA -->
+  <div data-aos="fade-up" data-aos-delay="260" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;">
+    <button style="background:#EF5F5F;color:#fff;font-family:'Inter Tight',sans-serif;font-weight:900;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;padding:16px 36px;border-radius:14px;border:none;cursor:not-allowed;display:flex;align-items:center;gap:10px;">
+      <i data-lucide="lock" style="width:16px;height:16px;"></i>
+      INGRESSO PARA O CLUBE ENCERRADO
+    </button>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
+      <span style="color:#7AD1B8;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;">Novas vagas em breve</span>
+      <span style="color:#948B9E;font-size:18px;font-family:'Inter Tight',sans-serif;font-weight:700;">R$ 1.997</span>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div data-aos="fade-up" data-aos-delay="400" style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.45;">
+    <span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#948B9E;">Scroll</span>
+    <i data-lucide="chevron-down" style="width:16px;height:16px;color:#948B9E;animation:bounce 2s infinite;"></i>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SOCIAL PROOF BAR
+══════════════════════════════════════════════════ -->
+<div style="border-top:1px solid #2A2433;border-bottom:1px solid #2A2433;padding:18px 0;overflow:hidden;position:relative;">
+  <div class="marquee-track">
+    <!-- Set A -->
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">META ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">GOOGLE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">TIKTOK ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">YOUTUBE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">NATIVE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">DIRECT RESPONSE</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <!-- Set B (duplicate for seamless loop) -->
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">META ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">GOOGLE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">TIKTOK ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">YOUTUBE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">NATIVE ADS</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+    <span style="color:#948B9E;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;opacity:.38;padding:0 48px;">DIRECT RESPONSE</span>
+    <span style="color:#2A2433;font-size:11px;padding:0 4px;">•</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     UM RECADO DIRETO DO ALLAN
+══════════════════════════════════════════════════ -->
+<section style="padding:100px 24px;max-width:1200px;margin:0 auto;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;" class="about-grid">
+    <!-- Left -->
+    <div data-aos="fade-right">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+        <i data-lucide="zap" style="width:24px;height:24px;color:#7AD1B8;flex-shrink:0;"></i>
+        <span style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#948B9E;font-weight:600;">O Convite</span>
+      </div>
+      <h2 class="heading mid-title" style="color:#F2F2F2;margin-bottom:20px;">
+        UM RECADO<br>DIRETO DO<br><span class="text-gradient">ALLAN</span>
+      </h2>
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid rgba(122,209,184,0.15);border-radius:999px;">
+        <i data-lucide="pen-line" style="width:13px;height:13px;color:#948B9E;"></i>
+        <span style="font-size:11px;color:#948B9E;font-weight:600;letter-spacing:0.06em;">Escrito 100% à mão. Sem IA.</span>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div data-aos="fade-left" style="color:#948B9E;line-height:1.72;font-size:15px;">
+      <p style="margin-bottom:18px;">
+        The Media Buyer Club era para ser um simples <strong style="color:#F2F2F2;">"último produto"</strong> de uma esteira educacional (que começou ali, com o produto de Bidcap). Tomei muito cuidado nas palavras e no posicionamento para não parecer apenas mais um mecanismo falho.
+      </p>
+      <p style="margin-bottom:18px;">
+        Eu esperava no máximo 30 pessoas, mas no primeiro dia já tinha mais de 50. Aqui estão <strong style="color:#F2F2F2;">verdadeiras lendas</strong>. Mentores meus, que eu via distantes em podcasts do VTurb. São mais de bilhões em mídia paga reunidos.
+      </p>
+      <p style="margin-bottom:18px;">
+        Um projeto que era para ser o produto final da minha esteira, agora é um produto do próprio Direct Response. Não consigo mais olhar para o TMBC como meu, mas sim como <strong style="color:#F2F2F2;">nosso</strong>. Sinto-me lisonjeado por esse espaço ter sido aberto para mim, diante de pessoas tão grandes que hoje estão aqui para tocar esse projeto junto comigo!
+      </p>
+      <p style="margin-bottom:28px;">
+        Contem comigo,<br>
+        <em style="color:#7AD1B8;">Lets buy more media</em>
+      </p>
+      <div style="border-top:1px solid #2A2433;padding-top:20px;">
+        <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:4px;">Allan Luiz</p>
+        <p style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#948B9E;">Founder — The Media Buyer Club</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     PARE AGORA
+══════════════════════════════════════════════════ -->
+<section style="padding:80px 24px;max-width:1200px;margin:0 auto;">
+  <!-- Title -->
+  <div style="text-align:center;margin-bottom:56px;" data-aos="fade-up">
+    <div class="pill" style="margin:0 auto 20px;width:fit-content;border-color:rgba(239,95,95,0.3);color:#EF5F5F;">
+      <span class="pill-dot" style="background:#EF5F5F;"></span>AVISO IMPORTANTE
+    </div>
+    <h2 class="heading section-title" style="color:#EF5F5F;margin-bottom:16px;">
+      PARE AGORA<br>SE VOCÊ FOR<br>INICIANTE
+    </h2>
+    <p style="color:#948B9E;max-width:520px;margin:0 auto 8px;font-size:15px;line-height:1.6;">
+      O The Media Buyer Club não é uma escola. Não é uma formação.
+    </p>
+    <p style="color:#948B9E;font-size:14px;font-style:italic;">Isso não é para você se:</p>
+  </div>
+
+  <!-- Bento 2×2 -->
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:800px;margin:0 auto;" class="bento-danger">
+
+    <!-- Card 1 -->
+    <div class="card card-danger" data-aos="fade-up" data-aos-delay="60">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(239,95,95,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <i data-lucide="monitor" style="width:22px;height:22px;color:#EF5F5F;"></i>
+      </div>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Subir Campanha</h3>
+      <p style="color:#948B9E;font-size:14px;line-height:1.65;">Você quer aprender a "subir campanha" no Gerenciador. Aqui não ensinamos o básico — partimos de onde os outros param.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card card-danger" data-aos="fade-up" data-aos-delay="120">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(239,95,95,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <i data-lucide="trending-up" style="width:22px;height:22px;color:#EF5F5F;"></i>
+      </div>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">6, 7, 8 Dígitos</h3>
+      <p style="color:#948B9E;font-size:14px;line-height:1.65;">Você espera promessas de "6, 7, 8d". Não vendemos sonhos nem garantias de faturamento. Vendemos acesso e estratégia.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card card-danger" data-aos="fade-up" data-aos-delay="180">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(239,95,95,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <i data-lucide="shield-off" style="width:22px;height:22px;color:#EF5F5F;"></i>
+      </div>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Babá do Tráfego</h3>
+      <p style="color:#948B9E;font-size:14px;line-height:1.65;">Você precisa de uma "babá" para o seu tráfego. Aqui os membros chegam prontos. Autonomia é requisito mínimo.</p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card card-danger" data-aos="fade-up" data-aos-delay="240">
+      <div style="width:48px;height:48px;border-radius:12px;background:rgba(239,95,95,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <i data-lucide="briefcase" style="width:22px;height:22px;color:#EF5F5F;"></i>
+      </div>
+      <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Garantia de Emprego</h3>
+      <p style="color:#948B9E;font-size:14px;line-height:1.65;">Aqui é o melhor lugar para contratações, mas não espere sair daqui com vaga garantida. Você terá que se provar.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SHOWCASE — O MASTERMIND
+══════════════════════════════════════════════════ -->
+<section style="padding:80px 24px;max-width:1200px;margin:0 auto;">
+  <div data-aos="fade-up" style="position:relative;background:#0D0911;border:1px solid #2A2433;border-radius:40px;padding:clamp(40px,6vw,80px);overflow:hidden;">
+
+    <!-- Glow inside card -->
+    <div class="glow-green" style="width:500px;height:500px;top:-100px;right:-100px;opacity:.6;"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1;" class="showcase-grid">
+
+      <!-- Left -->
+      <div>
+        <div class="pill" style="margin-bottom:24px;"><span class="pill-dot"></span>O QUE É O TMBC</div>
+        <h2 class="heading mid-title" style="color:#F2F2F2;margin-bottom:24px;">
+          CONHECIMENTO,<br>MASTERMIND,<br><span class="text-gradient">NETWORKING</span>
+        </h2>
+        <p style="color:#948B9E;line-height:1.7;font-size:15px;margin-bottom:20px;">
+          Construído pela inteligência coletiva de quem está no campo de batalha.
+        </p>
+        <div style="border-top:1px solid #2A2433;padding-top:20px;">
+          <p style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7AD1B8;font-weight:700;margin-bottom:6px;">O Objetivo</p>
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:16px;line-height:1.4;">Transformar o Brasil no melhor país de Media Buying do mundo.</p>
+        </div>
+      </div>
+
+      <!-- Right — Stats -->
+      <div style="display:grid;gap:12px;">
+        <div style="background:#07040B;border:1px solid #2A2433;border-radius:20px;padding:32px 36px;">
+          <div class="stat-num" style="font-size:clamp(48px,6vw,80px);color:#7AD1B8;margin-bottom:8px;" data-count="200">200+</div>
+          <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#948B9E;font-weight:600;">Membros</div>
+        </div>
+        <div style="background:#07040B;border:1px solid #2A2433;border-radius:20px;padding:32px 36px;">
+          <div class="stat-num" style="font-size:clamp(48px,6vw,80px);color:#F2F2F2;margin-bottom:8px;">+3<span style="color:#7AD1B8;">bi</span></div>
+          <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#948B9E;font-weight:600;">Em mídia paga gerenciada</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     O QUE VAMOS COBRIR
+══════════════════════════════════════════════════ -->
+<section style="padding:0 24px 80px;max-width:1200px;margin:0 auto;">
+  <div data-aos="fade-up" style="background:#0D0911;border:1px solid #2A2433;border-radius:28px;padding:clamp(32px,4vw,56px);overflow:hidden;position:relative;">
+    <div class="glow-green" style="width:400px;height:400px;bottom:-150px;left:-100px;opacity:.4;"></div>
+    <div style="position:relative;z-index:1;">
+      <div class="pill" style="margin-bottom:24px;"><span class="pill-dot"></span>COBERTURA</div>
+      <h2 class="heading mid-title" style="color:#F2F2F2;margin-bottom:40px;">
+        O QUE VAMOS<br><span class="text-gradient">COBRIR</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;" class="cover-grid">
+
+        <!-- Fontes de Aquisição -->
+        <div style="background:#07040B;border:1px solid #2A2433;border-radius:18px;padding:28px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i data-lucide="globe" style="width:18px;height:18px;color:#7AD1B8;"></i>
+            </div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:-0.01em;color:#F2F2F2;">Estratégias de Várias Fontes de Aquisições</h3>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>Meta Ads
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>TikTok Ads
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>YouTube Ads
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>Search
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>Kwai
+            </li>
+          </ul>
+        </div>
+
+        <!-- Nichos -->
+        <div style="background:#07040B;border:1px solid #2A2433;border-radius:18px;padding:28px;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <i data-lucide="layers" style="width:18px;height:18px;color:#7AD1B8;"></i>
+            </div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:-0.01em;color:#F2F2F2;">Nichos Variados</h3>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>Infoprodutos
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>Nutra
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>Leads
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>High Ticket
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>X1
+            </li>
+            <li style="display:flex;align-items:center;gap:10px;color:#948B9E;font-size:14px;">
+              <span style="width:5px;height:5px;border-radius:50%;background:#7AD1B8;flex-shrink:0;"></span>Drop Global
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     ROADMAP 2026
+══════════════════════════════════════════════════ -->
+<section style="padding:100px 24px;max-width:900px;margin:0 auto;">
+
+  <!-- Section header -->
+  <div style="text-align:center;margin-bottom:72px;" data-aos="fade-up">
+    <div class="pill" style="margin:0 auto 20px;width:fit-content;"><span class="pill-dot"></span>CRONOGRAMA</div>
+    <h2 class="heading section-title" style="color:#F2F2F2;">
+      ROADMAP<br><span class="text-gradient">2026</span>
+    </h2>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline-wrap" id="timeline">
+    <div class="timeline-spine" id="tl-spine"></div>
+
+    <!-- Item 1 — right side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;margin-bottom:48px;align-items:center;" data-aos="fade-right">
+      <div style="grid-column:1;display:flex;justify-content:flex-end;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="message-circle" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Grupo Fechado no WhatsApp</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Para troca de ideia diária.</p>
+          </div>
+        </div>
+      </div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;"></div>
+    </div>
+
+    <!-- Item 2 — left side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;margin-bottom:48px;align-items:center;" data-aos="fade-left">
+      <div style="grid-column:1;"></div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="hash" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Grupo Fechado no Discord</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Networking sem ruído, apenas alto nível, onde as calls acontecem.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 3 — right side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;margin-bottom:48px;align-items:center;" data-aos="fade-right">
+      <div style="grid-column:1;display:flex;justify-content:flex-end;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="video" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Calls com Convidados de Elite</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Players que dominam o mercado global.</p>
+          </div>
+        </div>
+      </div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;"></div>
+    </div>
+
+    <!-- Item 4 — left side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;margin-bottom:48px;align-items:center;" data-aos="fade-left">
+      <div style="grid-column:1;"></div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="bar-chart-2" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Estudos de Caso Reais</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Alunos que aplicaram o método em Info, Nutra, Leads, Drop, X1.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 5 — right side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;margin-bottom:48px;align-items:center;" data-aos="fade-right">
+      <div style="grid-column:1;display:flex;justify-content:flex-end;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="handshake" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7AD1B8;font-weight:700;margin-bottom:4px;">Em andamento</div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Parceiros de Qualidade</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Acesso a copywriters, editores e gestores de projetos validados.</p>
+          </div>
+        </div>
+      </div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;"></div>
+    </div>
+
+    <!-- Item 6 — left side -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;margin-bottom:48px;align-items:center;" data-aos="fade-left">
+      <div style="grid-column:1;"></div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot"></div>
+      </div>
+      <div style="grid-column:3;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="calendar-check" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7AD1B8;font-weight:700;margin-bottom:4px;">Em andamento</div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Eventos Online Exclusivos</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Imersões estratégicas para acelerar seus resultados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 7 — right side (Merch) -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;" data-aos="fade-right">
+      <div style="grid-column:1;display:flex;justify-content:flex-end;">
+        <div class="card" style="max-width:340px;display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i data-lucide="shirt" style="width:20px;height:20px;color:#7AD1B8;"></i>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7AD1B8;font-weight:700;margin-bottom:4px;">Em breve</div>
+            <h3 style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:6px;">Merch</h3>
+            <p style="color:#948B9E;font-size:13px;line-height:1.6;">Camisetas Exclusivas e Personalizadas.</p>
+          </div>
+        </div>
+      </div>
+      <div style="grid-column:2;display:flex;align-items:center;justify-content:center;">
+        <div class="timeline-dot" style="background:#2A2433;box-shadow:none;border-color:#2A2433;"></div>
+      </div>
+      <div style="grid-column:3;"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     THE LEGENDS
+══════════════════════════════════════════════════ -->
+<section style="padding:100px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:64px;" data-aos="fade-up">
+      <div class="pill" style="margin:0 auto 20px;width:fit-content;"><span class="pill-dot"></span>MEMBROS</div>
+      <h2 class="heading section-title" style="color:#F2F2F2; font-size: clamp(54px, 9vw, 120px);">
+        THE<br><span class="text-gradient">LEGENDS</span>
+      </h2>
+    </div>
+
+    <!-- Avatars carousel -->
+    <div class="carousel-scroll" style="margin-bottom:64px;padding:8px 4px 20px;justify-content:center;flex-wrap:nowrap;" data-aos="fade-up">
+
+      <!-- Pedro Andrade -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring">
+          <img src="/pedroa.jpg" alt="Pedro Andrade"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none; width:100px; height:100px; font-size:18px;">PA</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;">Pedro Andrade</p>
+        </div>
+      </div>
+
+      <!-- Allan Luiz -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring" style="background:linear-gradient(135deg,#7AD1B8,#EF5F5F,#9b59b6);">
+          <img src="/allan.jpg" alt="Allan Luiz"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none; width:100px; height:100px; font-size:18px;">AL</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;">Allan Luiz</p>
+        </div>
+      </div>
+
+      <!-- Denis Pereira -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring">
+          <img src="/denisp.jpg" alt="Denis Pereira"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none; width:100px; height:100px; font-size:18px;">DP</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;">Denis Pereira</p>
+        </div>
+      </div>
+
+      <!-- Lucas Rego -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring" style="background:linear-gradient(135deg,#4a90d9,#7AD1B8);">
+          <img src="/lucasr.jpg" alt="Lucas Rego"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none; width:100px; height:100px; font-size:18px;">LR</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;">Lucas Rego</p>
+        </div>
+      </div>
+
+      <!-- Dairo Junior -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring" style="background:linear-gradient(135deg,#9b59b6,#EF5F5F,#7AD1B8);">
+          <img src="/dairoj.jpg" alt="Dairo Junior"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none; width:100px; height:100px; font-size:18px;">DJ</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;">Dairo Junior</p>
+        </div>
+      </div>
+
+      <!-- Jefferson Anacleto -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring" style="background:linear-gradient(135deg,#EF5F5F,#4a90d9);">
+          <img src="/anacleto.jpg" alt="Jefferson Anacleto"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none; width:100px; height:100px; font-size:18px;">JA</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;">Jefferson Anacleto</p>
+        </div>
+      </div>
+
+      <!-- Hugo Santos -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring" style="background:linear-gradient(135deg,#7AD1B8,#4a90d9);">
+          <img src="/hugo.jpg" alt="Hugo Santos"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none; width:100px; height:100px; font-size:18px;">HS</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;">Hugo Santos</p>
+        </div>
+      </div>
+
+      <!-- Derlan Lima -->
+      <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div class="avatar-ring" style="background:linear-gradient(135deg,#9b59b6,#7AD1B8);">
+          <img src="/derlan.jpg" alt="Derlan Lima"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               style="width:100px;height:100px;border-radius:50%;object-fit:cover;display:block;background:#0D0911;" />
+          <div class="avatar-fallback" style="display:none; width:100px; height:100px; font-size:18px;">DL</div>
+        </div>
+        <div style="text-align:center;">
+          <p style="color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;">Derlan Lima</p>
+        </div>
+      </div>
+
+    </div><!-- /carousel -->
+
+    <!-- 3 feature cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="feat-grid" data-aos="fade-up">
+
+      <div class="card" style="transition:border-color .25s,box-shadow .25s;" onmouseover="this.style.borderColor='rgba(122,209,184,.35)';this.style.boxShadow='0 0 40px 4px rgba(122,209,184,.08)';" onmouseout="this.style.borderColor='#2A2433';this.style.boxShadow='none';">
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i data-lucide="target" style="width:22px;height:22px;color:#7AD1B8;"></i>
+        </div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Direct Response</h3>
+        <p style="color:#948B9E;font-size:14px;line-height:1.65;">Copy, ângulos, criativos e funis que convertem em escala. A arte de fazer o cliente agir agora.</p>
+      </div>
+
+      <div class="card" style="transition:border-color .25s,box-shadow .25s;" onmouseover="this.style.borderColor='rgba(122,209,184,.35)';this.style.boxShadow='0 0 40px 4px rgba(122,209,184,.08)';" onmouseout="this.style.borderColor='#2A2433';this.style.boxShadow='none';">
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i data-lucide="activity" style="width:22px;height:22px;color:#7AD1B8;"></i>
+        </div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Media Buying</h3>
+        <p style="color:#948B9E;font-size:14px;line-height:1.65;">Estratégias avançadas em Meta, Google, TikTok e plataformas nativas de alto volume de spend.</p>
+      </div>
+
+      <div class="card" style="transition:border-color .25s,box-shadow .25s;" onmouseover="this.style.borderColor='rgba(122,209,184,.35)';this.style.boxShadow='0 0 40px 4px rgba(122,209,184,.08)';" onmouseout="this.style.borderColor='#2A2433';this.style.boxShadow='none';">
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(122,209,184,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <i data-lucide="crown" style="width:22px;height:22px;color:#7AD1B8;"></i>
+        </div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:10px;">Mastermind</h3>
+        <p style="color:#948B9E;font-size:14px;line-height:1.65;">Networking real com quem está na elite. Conexões que valem mais do que qualquer curso do mercado.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     EMPRESAS PARCEIRAS
+══════════════════════════════════════════════════ -->
+<section style="padding:100px 24px; background: rgba(122,209,184,0.02);">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:64px;" data-aos="fade-up">
+      <div class="pill" style="margin:0 auto 20px;width:fit-content;"><span class="pill-dot"></span>PARCERIAS</div>
+      <h2 class="heading section-title" style="color:#F2F2F2; margin-bottom: 8px;">
+        EMPRESAS<br><span class="text-gradient">PARCEIRAS</span>
+      </h2>
+      <p style="color:#948B9E; font-family:'Inter Tight',sans-serif; font-weight:700; font-size:14px; letter-spacing:0.1em; text-transform:uppercase;">para afiliação</p>
+    </div>
+
+    <!-- Partners Grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;" class="partners-grid" data-aos="fade-up">
+      
+      <!-- Tiger Offers -->
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;">
+        <div style="width:120px;height:120px;border-radius:24px;overflow:hidden;border:1px solid #2A2433;background:#07040B;">
+          <img src="/tiger.jpg" alt="Tiger Offers" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div>
+          <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:4px;">Tiger Offers</h3>
+          <p style="color:#7AD1B8;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;">Parceiro Oficial</p>
+        </div>
+      </div>
+
+      <!-- Black Shark -->
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;">
+        <div style="width:120px;height:120px;border-radius:24px;overflow:hidden;border:1px solid #2A2433;background:#07040B;">
+          <img src="/bs.jpg" alt="Black Shark" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div>
+          <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:4px;">Black Shark</h3>
+          <p style="color:#7AD1B8;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;">Parceiro Oficial</p>
+        </div>
+      </div>
+
+      <!-- VHSupps -->
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;">
+        <div style="width:120px;height:120px;border-radius:24px;overflow:hidden;border:1px solid #2A2433;background:#07040B;">
+          <img src="/vh.jpg" alt="VHSupps" style="width:100%;height:100%;object-fit:cover;" />
+        </div>
+        <div>
+          <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;margin-bottom:4px;">VHSupps</h3>
+          <p style="color:#7AD1B8;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;">Parceiro Oficial</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     OUTRAS EMPRESAS NO GRUPO
+══════════════════════════════════════════════════ -->
+<section style="padding:60px 24px 100px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;" data-aos="fade-up">
+      <h2 class="heading mid-title" style="color:#F2F2F2;">
+        OUTRAS EMPRESAS<br><span class="text-gradient">NO GRUPO</span>
+      </h2>
+    </div>
+
+    <div style="display:flex;justify-content:center;" data-aos="fade-up">
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;max-width:300px;width:100%;">
+        <div style="width:160px;height:auto;border-radius:18px;overflow:hidden;border:1px solid #2A2433;background:#07040B;padding:20px;">
+          <img src="/utmify_logo.jpg" alt="Utmify" style="width:100%;height:auto;object-fit:contain;" />
+        </div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:20px;text-transform:uppercase;letter-spacing:-0.02em;color:#F2F2F2;">Utmify</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     DISCORD FECHADO
+══════════════════════════════════════════════════ -->
+<section style="padding:80px 24px;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;" data-aos="fade-up">
+      <h2 class="heading section-title" style="color:#F2F2F2;">
+        DISCORD<br><span class="text-gradient">FECHADO</span>
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER CTA
+══════════════════════════════════════════════════ -->
+<section style="padding:80px 24px;">
+  <div style="max-width:900px;margin:0 auto;" data-aos="fade-up">
+    <div style="position:relative;background:#7AD1B8;border-radius:40px;padding:clamp(48px,8vw,96px) clamp(28px,6vw,80px);text-align:center;overflow:hidden;">
+
+      <!-- Decorative blobs -->
+      <div style="position:absolute;top:-60px;left:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.08);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.08);pointer-events:none;"></div>
+
+      <!-- Noise texture overlay -->
+      <div style="position:absolute;inset:0;opacity:.04;border-radius:40px;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22/%3E%3C/filter%3E%3Crect width=%22300%22 height=%22300%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');pointer-events:none;"></div>
+
+      <div style="position:relative;z-index:1;">
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border:1px solid rgba(0,0,0,0.2);border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(7,4,11,0.65);margin-bottom:24px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:rgba(7,4,11,0.4);"></span>
+          PRÓXIMA TURMA
+        </div>
+
+        <h2 class="heading" style="font-size:clamp(40px,7vw,88px);color:#07040B;margin-bottom:20px;">
+          PRONTO PARA<br>O PRÓXIMO<br>NÍVEL?
+        </h2>
+
+        <p style="color:rgba(7,4,11,0.65);font-size:16px;line-height:1.65;max-width:480px;margin:0 auto 36px;">
+          As vagas são limitadas e os ingressos estão encerrados no momento. Entre na lista de espera para ser notificado quando abrir.
+        </p>
+
+        <button style="background:#07040B;color:#F2F2F2;font-family:'Inter Tight',sans-serif;font-weight:900;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;padding:16px 40px;border-radius:14px;border:none;cursor:not-allowed;display:inline-flex;align-items:center;gap:10px;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          <i data-lucide="lock" style="width:15px;height:15px;"></i>
+          INGRESSO ENCERRADO
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
+<footer style="border-top:1px solid #2A2433;padding:48px 24px;">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+      <img src="/TMBC2xlogo.png" alt="The Media Buyer Club" style="height: 160px; width: auto;" />
+      <p style="color:#948B9E;font-size:14px;">O Mastermind para os melhores Media Buyers do Brasil.</p>
+    </div>
+    <p style="color:#948B9E;font-size:12px;">© 2026 The Media Buyer Club. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════════════ -->
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.js"></script>
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  /* ── Init ────────────────────────────── */
+  lucide.createIcons();
+  AOS.init({ duration: 680, easing: 'ease-out-cubic', once: true, offset: 70 });
+
+  /* ── Header scroll ────────────────────── */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Responsive grid fixes ─────────────── */
+  function applyResponsive() {
+    const w = window.innerWidth;
+
+    // About 2-col → 1-col
+    document.querySelectorAll('.about-grid').forEach(el => {
+      el.style.gridTemplateColumns = w < 900 ? '1fr' : '1fr 1fr';
+    });
+
+    // Showcase 2-col → 1-col
+    document.querySelectorAll('.showcase-grid').forEach(el => {
+      el.style.gridTemplateColumns = w < 900 ? '1fr' : '1fr 1fr';
+    });
+
+    // Feature 3-col → 1-col
+    document.querySelectorAll('.feat-grid').forEach(el => {
+      el.style.gridTemplateColumns = w < 640 ? '1fr' : w < 900 ? 'repeat(2,1fr)' : 'repeat(3,1fr)';
+    });
+
+    // Bento 2-col → 1-col
+    document.querySelectorAll('.bento-danger').forEach(el => {
+      el.style.gridTemplateColumns = w < 640 ? '1fr' : 'repeat(2,1fr)';
+    });
+
+    // Cover 2-col → 1-col
+    document.querySelectorAll('.cover-grid').forEach(el => {
+      el.style.gridTemplateColumns = w < 640 ? '1fr' : 'repeat(2,1fr)';
+    });
+
+    // Timeline spine hidden on mobile
+    const spine = document.getElementById('tl-spine');
+    if (spine) spine.style.display = w < 700 ? 'none' : 'block';
+
+    // Timeline items: collapse to single col on mobile
+    document.querySelectorAll('#timeline > div').forEach(row => {
+      if (w < 700) {
+        row.style.gridTemplateColumns = '1fr';
+        row.style.gap = '0';
+        // Show all cells, hide empty ones
+        const cells = row.querySelectorAll(':scope > div');
+        cells.forEach(c => {
+          if (!c.querySelector('.card') && !c.querySelector('.timeline-dot')) {
+            c.style.display = 'none';
+          }
+          if (c.querySelector('.timeline-dot')) c.style.display = 'none';
+        });
+      } else {
+        row.style.gridTemplateColumns = '1fr auto 1fr';
+        row.style.gap = '24px';
+        const cells = row.querySelectorAll(':scope > div');
+        cells.forEach(c => { c.style.display = ''; });
+      }
+    });
+  }
+
+  applyResponsive();
+  window.addEventListener('resize', applyResponsive);
+
+  /* ── Pulse keyframe ────────────────────── */
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.5; transform:scale(0.85); }
+    }
+    @keyframes bounce {
+      0%,100% { transform:translateY(0); }
+      50%      { transform:translateY(5px); }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+
+</body>
+</html>
