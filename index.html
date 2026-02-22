@@ -758,7 +758,13 @@
     </div>
 
     <!-- Avatars carousel -->
-    <div class="carousel-scroll" style="margin-bottom:64px;padding:8px 4px 20px;justify-content:center;flex-wrap:nowrap;" data-aos="fade-up">
+    <div class="carousel-scroll" style="margin-bottom:64px;padding:8px 4px 20px;display:flex;gap:32px;overflow-x:auto;scrollbar-width:none;justify-content:flex-start;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;" data-aos="fade-up">
+      <style>
+        .carousel-scroll::-webkit-scrollbar { display: none; }
+        @media (min-width: 1024px) {
+          .carousel-scroll { justify-content: center; }
+        }
+      </style>
 
       <!-- Pedro Andrade -->
       <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px;">
